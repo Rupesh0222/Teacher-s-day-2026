@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Teacher's Day 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Chalk dust ambient canvas -->
+<canvas id="dust-canvas"></canvas>
+
+<button class="music-toggle" aria-pressed="false" aria-label="Play background music">
+  <svg class="icon-on" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <svg class="icon-off" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</button>
+
+<!-- Background music — drop your mp3 in the site folder and point the src at it -->
+<audio id="bg-music" loop preload="none">
+  <source src= audio/bgm.mp3 type="audio/mpeg">
+</audio>
+
+<main class="board">
+
+  <div class="board-grain"></div>
+  <div class="board-vignette"></div>
+
+  <!-- Eyebrow ledge -->
+  <div class="chalk-ledge" aria-hidden="true"></div>
+
+  <section class="hero">
+
+    <p class="eyebrow">05 · 09 · 2026</p>
+
+    <h1 class="chalk-title" id="chalk-title">
+      <svg viewBox="0 0 900 170" class="chalk-svg" id="chalk-svg" aria-labelledby="chalk-title-desc">
+        <desc id="chalk-title-desc">Happy Teacher's Day 2026</desc>
+        <text x="450" y="120" text-anchor="middle" class="chalk-path" id="chalk-path">Happy Teacher&#8217;s Day 2026</text>
+      </svg>
+    </h1>
+
+    <p class="quote" id="quote">
+      &ldquo;A teacher affects eternity; no one can tell where their influence stops.&rdquo;
+    </p>
+
+    <!-- Video player -->
+    <div class="frame-wrap">
+      <div class="video-frame">
+        <div class="frame-plate"><span>A Message, For You</span></div>
+        <div class="video-inner">
+          <video
+            id="tribute-video"
+            class="tribute-video"
+            controls
+            preload="none"
+            poster="">
+            <source src="invitation.mp4" type="video/mp4">
+            <!-- Attach your video by adding a src here, e.g. <source src="your-video.mp4" type="video/mp4"> -->
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-placeholder" id="video-placeholder">
+            <svg viewBox="0 0 64 64" class="play-glyph" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M26 21 L46 32 L26 43 Z" fill="currentColor"/>
+            </svg>
+            <p>Your tribute video will play here</p>
+          </div>
+        </div>
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="time-unit">
+          <span class="time-value" id="cd-days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="cd-hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="cd-mins">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <span class="colon">:</span>
+        <div class="time-unit">
+          <span class="time-value" id="cd-secs">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+      <p class="countdown-caption">Time left for Teacher&#8217;s Day 2026</p>
+    </div>
+
+    <!-- CTA -->
+    <button class="enter-btn" id="enter-btn">
+      <span>Enter the Celebration</span>
+    </button>
+
+  </section>
+
+  <p class="board-footer">Crafted with gratitude &middot; 2026</p>
+
+</main>
+
+<!-- Transition overlay -->
+<div class="transition-overlay" id="transition-overlay" aria-hidden="true">
+  <div class="t-blackboard" id="t-blackboard"></div>
+  <canvas id="t-dust-canvas"></canvas>
+  <div class="t-paper" id="t-paper">
+    <div class="t-paper-margin"></div>
+    <div class="t-paper-lines"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Teacher's Day Photo Booth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style6.css">
+</head>
+<body>
+
+<!-- soft bokeh backdrop, matches page palette without reusing the blackboard motif -->
+<div class="stage-backdrop" aria-hidden="true">
+  <span class="bokeh b1"></span><span class="bokeh b2"></span><span class="bokeh b3"></span>
+  <span class="bokeh b4"></span><span class="bokeh b5"></span>
+  <div class="filmstrip filmstrip-left" aria-hidden="true"></div>
+  <div class="filmstrip filmstrip-right" aria-hidden="true"></div>
+</div>
+
+<header class="booth-header">
+  <p class="booth-eyebrow">Teacher&rsquo;s Day 2026</p>
+  <h1 class="booth-title">The Teacher&rsquo;s Day <em>Photo Booth</em></h1>
+  <p class="booth-sub">Capture a memory with us</p>
+</header>
+
+<main class="booth-main">
+
+  <section class="booth-stage" aria-label="Camera">
+    <div class="mode-tabs" role="tablist" aria-label="Capture mode">
+      <button class="mode-tab is-active" data-mode="single" type="button" role="tab" aria-selected="true">
+        <svg viewBox="0 0 24 24"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        Single Shot
+      </button>
+      <button class="mode-tab" data-mode="multi" type="button" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="13" height="9" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="9" width="13" height="9" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        Multiple Shots
+      </button>
+      <button class="mode-tab" data-mode="gallery" type="button" role="tab" aria-selected="false">
+        <svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="9.5" r="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 16.5 9 12l3 3 3.5-4L20 15.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Upload from Gallery
+      </button>
+    </div>
+
+    <div class="camera-shell">
+      <div class="camera-frame" id="camera-frame">
+        <video id="camera-video" autoplay playsinline muted></video>
+        <img id="gallery-image" alt="Uploaded photo" hidden>
+        <div class="camera-placeholder" id="camera-placeholder" hidden>
+          <span>🖼️</span>
+          <p>Choose a photo from your device to begin</p>
+        </div>
+        <div class="emoji-ring" id="emoji-ring" aria-hidden="true"></div>
+        <div class="shot-dots" id="shot-dots" hidden><span></span><span></span><span></span></div>
+        <div class="countdown-ring" id="countdown-ring" aria-hidden="true"><span id="countdown-num">3</span></div>
+        <div class="flash" id="flash" aria-hidden="true"></div>
+      </div>
+      <input type="file" id="gallery-input" accept="image/*" hidden>
+    </div>
+
+    <div class="stage-actions">
+      <button class="choose-file-btn" id="choose-file-btn" type="button" hidden>Choose Photo</button>
+      <button class="capture-btn" id="capture-btn" type="button">
+        <span class="shutter-dot"></span> <span id="capture-btn-label">Capture</span>
+      </button>
+    </div>
+    <p class="camera-hint" id="camera-hint">Allow camera access to see your live preview.</p>
+  </section>
+
+  <aside class="booth-controls">
+    <section class="control-block">
+      <h3>Choose a Filter</h3>
+      <div class="filter-row" id="filter-row"></div>
+    </section>
+
+    <section class="control-block">
+      <h3>Emoji Border</h3>
+      <div class="emoji-set-row" id="emoji-set-row"></div>
+    </section>
+
+    <section class="control-block">
+      <h3>Choose a Frame</h3>
+      <div class="frame-grid" id="frame-grid"></div>
+      <label class="year-field" id="year-field" hidden>
+        <span>Making a difference since&hellip;</span>
+        <input type="text" id="frame-year-input" maxlength="14" placeholder="2026">
+      </label>
+    </section>
+  </aside>
+</main>
+
+<!-- Result modal -->
+<div class="result-overlay" id="result-overlay" aria-hidden="true">
+  <div class="result-backdrop" id="result-backdrop"></div>
+  <div class="result-card" role="dialog" aria-modal="true" aria-label="Your photo booth card">
+    <button class="result-close" id="result-close" aria-label="Close">&times;</button>
+    <p class="result-eyebrow">Your keepsake is ready</p>
+    <canvas id="output-canvas"></canvas>
+    <div class="result-actions">
+      <button id="download-btn" type="button">Download</button>
+      <button id="share-btn" type="button">Share</button>
+      <button id="retake-btn" type="button">Retake</button>
+    </div>
+  </div>
+</div>
+
+<!--
+  Sound effects: drop your own audio files into this folder using these
+  exact filenames (or edit the <source src> below to point elsewhere).
+  - countdown-tick.mp3  -> plays once per second during the 3-2-1 countdown
+  - camera-shutter.mp3  -> plays the moment a photo is captured
+-->
+<audio id="sound-tick" preload="auto"><source src= audio/ticking.mp3 type="audio/mpeg"></audio>
+<audio id="sound-shutter" preload="auto"><source src= audio/shutter.mp3 type="audio/mpeg"></audio>
+
+<button class="next-btn" id="next-btn" aria-label="Continue to next page">
+  <svg viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="20.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M18 14 L28 22 L18 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script src="script6.js"></script>
+</body>
+</html>

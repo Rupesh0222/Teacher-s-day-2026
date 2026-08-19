@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Today's Celebration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style7.css">
+</head>
+<body>
+
+<!-- custom fountain-pen cursor + ink trail -->
+<canvas id="ink-canvas"></canvas>
+<div class="pen-cursor" id="pen-cursor">
+  <svg viewBox="0 0 40 40" width="40" height="40">
+    <g transform="rotate(45 20 20)">
+      <path d="M20 4 L26 16 L20 34 L14 16 Z" fill="#151b23" stroke="#C6A24E" stroke-width="0.6"/>
+      <path d="M20 16 L23 16 L20 30 L17 16 Z" fill="#C6A24E"/>
+      <line x1="20" y1="4" x2="20" y2="16" stroke="#C6A24E" stroke-width="0.8"/>
+    </g>
+  </svg>
+</div>
+
+<button class="music-toggle" aria-pressed="false" aria-label="Play background music">
+  <svg class="icon-on" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <svg class="icon-off" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</button>
+
+<!-- Background music for this page -->
+<audio id="bg-music" loop preload="none">
+  <source src= audio/bgm.mp3 type="audio/mpeg">
+</audio>
+
+<!-- theatre curtain valance -->
+<div class="curtain" aria-hidden="true">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none" class="curtain-svg">
+    <path d="M0,0 H1200 V22
+      C1150,42 1100,6 1050,26
+      C1000,46 950,10 900,30
+      C850,50 800,14 750,34
+      C700,54 650,18 600,38
+      C550,58 500,22 450,42
+      C400,62 350,26 300,46
+      C250,66 200,30 150,50
+      C100,70 50,34 0,54 Z" fill="url(#curtainGrad)"/>
+    <path d="M0,22 C50,42 100,6 150,26 C200,46 250,10 300,30 C350,50 400,14 450,34 C500,54 550,18 600,38 C650,58 700,22 750,42 C800,26 850,62 900,46 C950,30 1000,66 1050,50 C1100,34 1150,70 1200,54"
+      fill="none" stroke="#C6A24E" stroke-width="1.4" opacity=".65"/>
+    <defs>
+      <linearGradient id="curtainGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5A2327"/>
+        <stop offset="100%" stop-color="#3A1518"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
+<header class="programme-header">
+  <p class="eyebrow">A Celebration in Seven Acts</p>
+  <h1 class="programme-title">Today&#8217;s Celebration</h1>
+  <p class="programme-date">September 5, 2026</p>
+</header>
+
+<!-- live status banner -->
+<div class="live-banner" id="live-banner">
+  <span class="live-dot" id="live-dot"></span>
+  <span class="live-text" id="live-text">Loading today&#8217;s programme&#8230;</span>
+</div>
+
+<!-- quick-glance glass info grid -->
+<section class="info-grid">
+  <div class="glass-card">
+    <span class="glass-icon">📍</span>
+    <p class="glass-value">School premises</p>
+    <p class="glass-label">Venue</p>
+  </div>
+  <div class="glass-card">
+    <span class="glass-icon">⏰</span>
+    <p class="glass-value" id="timings-value">10:00 AM &ndash; 1:00 PM</p>
+    <p class="glass-label">Timings</p>
+  </div>
+  <div class="glass-card">
+    <span class="glass-icon">🎤</span>
+    <p class="glass-value">Sanchit</p>
+    <p class="glass-label">Hosts</p>
+  </div>
+  <div class="glass-card">
+    <span class="glass-icon">🎭</span>
+    <p class="glass-value">4 Acts of Music &amp; Dance</p>
+    <p class="glass-label">Performances</p>
+  </div>
+  <div class="glass-card">
+    <span class="glass-icon">🎁</span>
+    <p class="glass-value">Photo booth &amp; Surprise Gifts</p>
+    <p class="glass-label">Special Activities</p>
+  </div>
+</section>
+
+<!-- theatre programme timeline -->
+<section class="programme-wrap">
+  <h2 class="section-title">The Programme</h2>
+  <div class="programme-list" id="programme-list"></div>
+</section>
+
+<button class="next-btn" id="next-btn" aria-label="Continue to next page">
+  <svg viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="20.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M18 14 L28 22 L18 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script src="script7.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>You Have a Surprise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style8.css">
+</head>
+<body>
+
+<!-- custom fountain-pen cursor + ink trail -->
+<canvas id="ink-canvas"></canvas>
+<div class="pen-cursor" id="pen-cursor">
+  <svg viewBox="0 0 40 40" width="40" height="40">
+    <g transform="rotate(45 20 20)">
+      <path d="M20 4 L26 16 L20 34 L14 16 Z" fill="#151b23" stroke="#C6A24E" stroke-width="0.6"/>
+      <path d="M20 16 L23 16 L20 30 L17 16 Z" fill="#C6A24E"/>
+      <line x1="20" y1="4" x2="20" y2="16" stroke="#C6A24E" stroke-width="0.8"/>
+    </g>
+  </svg>
+</div>
+
+<button class="music-toggle" aria-pressed="false" aria-label="Play background music">
+  <svg class="icon-on" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+  <svg class="icon-off" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</button>
+
+<!-- Background music for this page -->
+<audio id="bg-music" loop preload="none">
+  <source src= audio/bgm.mp3 type="audio/mpeg">
+</audio>
+
+<canvas id="sparkle-canvas"></canvas>
+
+<main class="surprise-scene">
+
+  <div class="ambient-glow"></div>
+
+  <section class="intro" id="intro">
+    <p class="intro-text">A little something for the people who give us so much.</p>
+
+    <div class="envelope-wrap" id="envelope-wrap">
+      <svg class="sparkle sparkle-a" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#E7CB86"/></svg>
+      <svg class="sparkle sparkle-b" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#E7CB86"/></svg>
+      <svg class="sparkle sparkle-c" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="#E7CB86"/></svg>
+
+      <button class="big-envelope" id="big-envelope" aria-label="Open your surprise">
+        <svg viewBox="0 0 320 220" class="envelope-svg">
+          <ellipse cx="160" cy="210" rx="150" ry="10" fill="rgba(0,0,0,.32)"/>
+          <rect x="10" y="30" width="300" height="170" rx="8" fill="#EFE6CE"/>
+          <path d="M10 38 L160 140 L310 38" fill="none" stroke="#C9BE9E" stroke-width="2"/>
+          <path id="flap" class="flap" d="M10 30 L160 136 L310 30 Z" fill="#E3D6B4" stroke="#C9BE9E" stroke-width="1.5"/>
+          <!-- ribbon -->
+          <rect x="146" y="30" width="28" height="170" fill="#7A2E32"/>
+          <path d="M160 118 C130 96 116 66 132 46 C140 60 150 72 160 78 C170 72 180 60 188 46 C204 66 190 96 160 118 Z" fill="#7A2E32" stroke="#5A2327" stroke-width="1.2"/>
+          <circle cx="160" cy="80" r="12" fill="#C6A24E" stroke="#8C743A" stroke-width="1.2"/>
+        </svg>
+        <span class="envelope-hint">Click to open</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="reveal" id="reveal" aria-hidden="true">
+    <p class="reveal-text">
+      This isn&#8217;t just a gift.<br class="reveal-break">
+      It&#8217;s a reminder that the lessons you taught us will stay long after the classroom is empty.
+    </p>
+  </section>
+
+  <section class="gift-section" id="gift-section" aria-hidden="true">
+    <p class="gift-eyebrow">🎁 Digital Gift</p>
+    <h2 class="gift-title">Choose what to open next</h2>
+
+    <div class="gift-grid">
+      <button class="gift-tile" data-gift="appreciation">
+        <span class="gift-icon">📇</span>
+        <span class="gift-label">Teacher Appreciation Card</span>
+      </button>
+      <button class="gift-tile" data-gift="video">
+        <span class="gift-icon">🎥</span>
+        <span class="gift-label">Video Montage</span>
+      </button>
+      <button class="gift-tile" data-gift="messages">
+        <span class="gift-icon">💌</span>
+        <span class="gift-label">Student Messages</span>
+      </button>
+      <button class="gift-tile" data-gift="photo">
+        <span class="gift-icon">📷</span>
+        <span class="gift-label">Class Photograph</span>
+      </button>
+      <button class="gift-tile" data-gift="qr">
+        <span class="gift-icon">📱</span>
+        <span class="gift-label">Surprise Video QR</span>
+      </button>
+      <button class="gift-tile" data-gift="certificate">
+        <span class="gift-icon">📜</span>
+        <span class="gift-label">Digital Certificate</span>
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- shared gift modal -->
+<div class="gift-overlay" id="gift-overlay" aria-hidden="true">
+  <button class="gift-close" id="gift-close" aria-label="Close">&times;</button>
+  <div class="gift-modal" id="gift-modal"></div>
+</div>
+
+<button class="next-btn" id="next-btn" aria-label="Continue to next page">
+  <svg viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="20.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M18 14 L28 22 L18 30" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script8.js"></script>
+</body>
+</html>
