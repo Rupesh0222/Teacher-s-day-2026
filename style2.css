@@ -25,7 +25,7 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; }
 
-body{
+body{ 
   background: var(--navy-deep);
   color: var(--ivory);
   font-family: var(--font-body);
@@ -231,6 +231,11 @@ body{
   background:
     radial-gradient(ellipse at 50% 50%, rgba(22,33,45,.94), rgba(9,13,18,.98));
   transition: opacity .6s var(--ease);
+  /* FIX: without this, a letter taller than the viewport had nowhere
+     to go — the overlay is fixed, so it couldn't scroll itself and
+     nothing inside it could either. */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .letter-overlay.is-open{
   opacity:1;
@@ -240,6 +245,9 @@ body{
 .letter-stage{
   perspective: 2200px;
   width: min(560px, 100%);
+  /* FIX: margin:auto keeps it centered when it fits, and lets it sit
+     at the top and scroll into view when it doesn't. */
+  margin: auto;
 }
 
 .letter-book{
@@ -252,7 +260,11 @@ body{
   transform-style: preserve-3d;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: none;
+  /* FIX: was `none`, which told the browser this element owns every
+     touch gesture (including vertical scrolling). `pan-y` tells the
+     browser vertical scrolling is still allowed by default; the JS
+     only takes over a gesture once it detects it's a horizontal swipe. */
+  touch-action: pan-y;
 }
 .letter-overlay.is-open .letter-book{
   transform: scale(1) translateY(0);
@@ -396,4 +408,13 @@ body{
   .prop.plant{ width:80px; }
   .letter-body{ font-size:.92rem; line-height:1.75; }
   .letter-paper{ padding: 2rem 1.5rem 1.6rem; }
+
+  /* FIX: on small screens, don't force vertical centering — if the
+     letter is taller than the screen, centering it can push the top
+     off-screen with no way to scroll up to it. Starting from the top
+     plus a little breathing-room padding lets it scroll naturally. */
+  .letter-overlay{
+    padding: 4.5rem 1rem 5.5rem;
+    align-items: flex-start;
+  }
 }

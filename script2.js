@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.querySelector('.music-toggle');
   let fadeTimer = null;
-
+ 
   function hasAudioSource(el) {
     if (!el) return false;
     if (el.getAttribute('src')) return true;
@@ -145,6 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       letterOverlay.classList.add('is-open');
       letterOverlay.setAttribute('aria-hidden', 'false');
+      // FIX: make sure the overlay opens scrolled to the top, so on
+      // phones the top of the letter (salutation) is always the first
+      // thing visible rather than whatever scroll position was left over.
+      letterOverlay.scrollTop = 0;
     }, 260);
   });
 
@@ -156,8 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let flipped = false;
   let dragging = false;
   let startX = 0;
+  let startY = 0;
   let baseAngle = 0;
   let currentAngle = 0;
+  // FIX: tracks whether the current gesture has resolved to a horizontal
+  // "swipe" (page flip) or a vertical "scroll" — null means undecided yet.
+  let intent = null;
+  const INTENT_THRESHOLD = 6; // px of movement before we commit to a direction
 
   function clampAngle(a) {
     return Math.max(FLIP_ANGLE, Math.min(0, a));
@@ -176,11 +185,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (changed) playFlipSound();
   }
 
-  function pointerDown(x) {
+  function pointerDown(x, y) {
     dragging = true;
+    intent = null; // FIX: don't assume swipe — wait to see which way the finger moves
     startX = x;
+    startY = y;
     baseAngle = flipped ? FLIP_ANGLE : 0;
-    frontFace.classList.add('is-dragging');
   }
   function pointerMove(x) {
     if (!dragging) return;
@@ -190,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function pointerUp() {
     if (!dragging) return;
     dragging = false;
+    intent = null;
     frontFace.classList.remove('is-dragging');
     const shouldFlip = currentAngle < FLIP_ANGLE / 2;
     flipTo(shouldFlip);
@@ -202,10 +213,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // for move/up keeps the gesture alive no matter which face is showing.
   letterBook.addEventListener('pointerdown', (e) => {
     if (e.target === flipHotspot) return;
-    e.preventDefault();
-    pointerDown(e.clientX);
+    // FIX: no preventDefault() here anymore — we don't yet know if this
+    // is a page-flip swipe or the user trying to scroll the page, so we
+    // let the browser keep its default behaviour until we can tell.
+    pointerDown(e.clientX, e.clientY);
   });
-  window.addEventListener('pointermove', (e) => pointerMove(e.clientX));
+
+  window.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+
+    if (intent === null) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (Math.abs(dx) < INTENT_THRESHOLD && Math.abs(dy) < INTENT_THRESHOLD) {
+        return; // not enough movement yet to know the direction
+      }
+      intent = Math.abs(dx) > Math.abs(dy) ? 'swipe' : 'scroll';
+      if (intent === 'swipe') {
+        frontFace.classList.add('is-dragging');
+      } else {
+        // it's a vertical scroll gesture — bail out and let the browser
+        // handle it natively instead of hijacking it for the page flip
+        dragging = false;
+        return;
+      }
+    }
+
+    if (intent === 'swipe') {
+      e.preventDefault(); // only block default once we're sure it's a flip
+      pointerMove(e.clientX);
+    }
+  }, { passive: false });
+
   window.addEventListener('pointerup', pointerUp);
   window.addEventListener('pointercancel', pointerUp);
 
