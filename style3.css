@@ -14,7 +14,7 @@
   --gold-light:  #E7CB86;
   --gold-dim:    #8C743A;
   --burgundy:    #7A2E32;
-  --leather:     #402A1D;
+  --leather:     #402A1D; 
   --leather-lt:  #5C3B26;
   --paper:       #F4EEDB;
   --paper-deep:  #EAE1C6;
@@ -267,6 +267,7 @@ body{
   border-radius:1px;
   overflow:hidden;
   position:relative;
+  background: var(--paper-deep);
 }
 .polaroid-photo::after{
   content:"";
@@ -277,7 +278,7 @@ body{
 }
 .polaroid-photo .avatar-img{
   width:100%; height:100%;
-  object-fit:cover;
+  object-fit:contain;   /* was cover */
   display:block;
 }
 .polaroid-photo .photo-fallback{
@@ -438,11 +439,13 @@ body{
   overflow:hidden;
   margin-bottom: 1.4rem;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+  background: var(--paper-deep);
 }
 .card-front .big-photo .avatar-img{
   width:100%; height:100%;
-  object-fit:cover;
+  object-fit:contain;   /* was cover */
   display:block;
+  background: var(--paper-deep);
 }
 .card-front .big-photo .photo-fallback{
   position:absolute; inset:0;
@@ -452,6 +455,7 @@ body{
   font-weight:700;
   font-size:3rem;
   color: rgba(255,255,255,.92);
+  background: var(--paper-deep);
 }
 .card-front .big-caption{
   font-family: var(--font-chalk);
@@ -488,10 +492,11 @@ body{
   overflow:hidden;
   margin: 0 auto .7rem;
   box-shadow: 0 6px 14px -4px rgba(0,0,0,.4);
+  background: var(--paper-deep);
 }
 .back-photo .avatar-img{
   width:100%; height:100%;
-  object-fit:cover;
+  object-fit:contain;   /* was cover */
   display:block;
 }
 .back-photo .photo-fallback{

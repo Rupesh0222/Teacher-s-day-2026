@@ -129,9 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
      (both the wall thumbnail and the profile card use the same
      photo). If a photo is missing, that teacher's card simply
      falls back to a soft colour block — nothing breaks.
-     ============================================================ */
+     ============================================================ */ 
   const NAMES = [
-    'Teacher Name 1', 'Teacher Name 2', 'Teacher Name 3', 'Teacher Name 4',
+    'Mr. Sanjay Pundhir', 'Mr. Saurav', 'Mrs. Ritu Chahal', 'Teacher Name 4',
     'Teacher Name 5', 'Teacher Name 6', 'Teacher Name 7', 'Teacher Name 8',
     'Teacher Name 9', 'Teacher Name 10', 'Teacher Name 11', 'Teacher Name 12',
     'Teacher Name 13', 'Teacher Name 14', 'Teacher Name 15', 'Teacher Name 16',
