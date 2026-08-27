@@ -51,25 +51,42 @@
     <div class="frame-wrap">
       <div class="video-frame">
         <div class="frame-plate"><span>A Message, For You</span></div>
-        <div class="video-inner">
-          <video
-            id="tribute-video"
-            class="tribute-video"
-            controls
-            preload="none"
-            poster="">
-            <source src="invitation.mp4" type="video/mp4">
-            <!-- Attach your video by adding a src here, e.g. <source src="your-video.mp4" type="video/mp4"> -->
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-placeholder" id="video-placeholder">
-            <svg viewBox="0 0 64 64" class="play-glyph" aria-hidden="true">
-              <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.4"/>
-              <path d="M26 21 L46 32 L26 43 Z" fill="currentColor"/>
-            </svg>
-            <p>Your tribute video will play here</p>
-          </div>
-        </div>
+        <div class="video-inner" id="video-inner">
+
+  <video
+    id="tribute-video"
+    class="tribute-video"
+    controls
+    preload="metadata"
+    poster="video-preview.jpg">
+
+    <source src="invitation.mp4" type="video/mp4">
+
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Custom preview overlay -->
+  <div class="video-preview" id="video-preview">
+
+    <button
+      class="custom-play"
+      id="custom-play"
+      aria-label="Play tribute video">
+
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30"></circle>
+        <path d="M26 20 L47 32 L26 44 Z"></path>
+      </svg>
+
+    </button>
+
+    <div class="preview-text">
+      <span>WATCH OUR Invitation video</span>
+    </div>
+
+  </div>
+
+</div>
         <div class="frame-corner tl"></div>
         <div class="frame-corner tr"></div>
         <div class="frame-corner bl"></div>

@@ -4,11 +4,47 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- 0. Show the video once a real source is attached ---------- */
-  const tributeVideo = document.getElementById('tribute-video');
-  if (tributeVideo && (tributeVideo.querySelector('source[src]') || tributeVideo.getAttribute('src'))) {
-    tributeVideo.classList.add('has-source');
+/* ---------- 0. Video preview + play button ---------- */
+
+const tributeVideo = document.getElementById('tribute-video');
+const videoPreview = document.getElementById('video-preview');
+const customPlay = document.getElementById('custom-play');
+const videoInner = document.getElementById('video-inner');
+
+if (tributeVideo && videoPreview && customPlay && videoInner) {
+
+  function playTributeVideo() {
+
+    const playPromise = tributeVideo.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          videoInner.classList.add('video-playing');
+        })
+        .catch(() => {});
+    }
   }
+
+  customPlay.addEventListener('click', (event) => {
+    event.stopPropagation();
+    playTributeVideo();
+  });
+
+  videoPreview.addEventListener('click', playTributeVideo);
+
+  tributeVideo.addEventListener('play', () => {
+    videoInner.classList.add('video-playing');
+  });
+
+  tributeVideo.addEventListener('pause', () => {
+    videoInner.classList.remove('video-playing');
+  });
+
+  tributeVideo.addEventListener('ended', () => {
+    videoInner.classList.remove('video-playing');
+  });
+}
 
   /* ---------- 0b. Background music ---------- */
   const MUSIC_KEY = 'td2026-music-enabled';
@@ -18,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.querySelector('.music-toggle');
-  let fadeTimer = null;
+  let fadeTimer = null; 
 
   function hasAudioSource(el) {
     if (!el) return false;
@@ -48,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     bgMusic.volume = 0;
     const playPromise = bgMusic.play();
     if (playPromise && playPromise.catch) {
-      playPromise.then(() => fadeTo(bgMusic, 0.42, 1400)).catch(() => {});
+      playPromise.then(() => fadeTo(bgMusic, 0.25, 1400)).catch(() => {});
     } else {
-      fadeTo(bgMusic, 0.42, 1400);
+      fadeTo(bgMusic, 0.25, 1400);
     }
   }
   function stopMusic() {
