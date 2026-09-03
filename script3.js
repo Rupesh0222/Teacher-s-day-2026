@@ -178,10 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     '#556B5D', '#7C5C3E', '#8A4B5E', '#6B4226', '#3F5A6B'
   ];
 
-  function ratingFor(i) {
-    const r = 4.3 + ((i * 37) % 71) / 100;
-    return Math.min(5, Math.round(r * 10) / 10);
-  }
 
   // strips a leading title (Mr./Mrs./Ms./Miss/Dr./Mx.) before computing
   // fallback initials, so "Mrs. Anjali Sharma" still gives "AS" not "MA"
@@ -206,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
       teaches: subject,
       knownFor: KNOWN_FOR[i % KNOWN_FOR.length],
       signature: SIGNATURE[i % SIGNATURE.length],
-      rating: ratingFor(i),
       color: COLORS[i % COLORS.length],
       photo: `teacher-${num}.jpg`,
       initials: initialsFrom(name),
@@ -263,13 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('profile-close');
   let currentTeacher = null;
 
-  function stars(rating) {
-    const full = Math.floor(rating);
-    const half = rating - full >= 0.5;
-    let s = '\u2605'.repeat(full);
-    if (half) s += '\u00bd';
-    return s;
-  }
+
 
   function renderCard(t) {
     cardFront.innerHTML = `
@@ -294,10 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="trait-emoji">\uD83D\uDCAC</span>
         <span class="trait-text"><span class="trait-label">Signature phrase</span>\u201c${t.signature}\u201d</span>
       </div>
-      <div class="trait-row">
-        <span class="trait-emoji">\u2B50</span>
-        <span class="trait-text"><span class="trait-label">Student rating</span>${stars(t.rating)} ${t.rating}/5</span>
-      </div>
+     
       <button class="download-btn" id="download-btn" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
         Download profile
@@ -418,7 +404,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ['Teaches', t.teaches],
         ['Known for', t.knownFor],
         ['Signature phrase', `\u201c${t.signature}\u201d`],
-        ['Student rating', `${stars(t.rating)} ${t.rating}/5`],
       ];
       let y = 226;
       rows.forEach(([label, value]) => {
