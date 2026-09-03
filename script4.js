@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
      photo is missing, that card falls back to a soft colour block
      with a small category icon — nothing breaks.
      ============================================================ */
-  const MEMORIES = [
+  const MEMORIES = [ 
     { caption: 'First day, Class 6-B',        category: 'Classrooms',      year: '2023' },
     { caption: 'Science fair volcano',        category: 'Events',          year: '2023' },
     { caption: 'Annual day rehearsal',        category: 'Celebrations',    year: '2023' },

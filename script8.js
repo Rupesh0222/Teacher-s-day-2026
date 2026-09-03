@@ -188,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'Your extra help before exams saved us every single time.', from: 'Grade 11' },
     { text: 'We still quote your jokes. Every single day.', from: 'Grade 9' },
   ];
-  const SURPRISE_VIDEO_URL = 'https://youtube.com'; // replace with your actual surprise video link
-  const CLASS_PHOTO_FILE = 'class-photo.jpg';
+  const SURPRISE_VIDEO_URL = 'https://youtu.be/4Hv8-PmwtEY?si=f9rf_m1UD0xwxW9i'; // replace with your actual surprise video link
+  const CLASS_PHOTO_FILE = 'images/teachers.jpg';
 
   /* ---------- 5. Gift modal ---------- */
   const overlay = document.getElementById('gift-overlay');

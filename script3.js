@@ -131,14 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
      falls back to a soft colour block — nothing breaks.
      ============================================================ */ 
   const NAMES = [
-    'Mr. Sanjay Pundhir', 'Mr. Saurav', 'Mrs. Ritu Chahal', 'Teacher Name 4',
-    'Teacher Name 5', 'Teacher Name 6', 'Teacher Name 7', 'Teacher Name 8',
-    'Teacher Name 9', 'Teacher Name 10', 'Teacher Name 11', 'Teacher Name 12',
-    'Teacher Name 13', 'Teacher Name 14', 'Teacher Name 15', 'Teacher Name 16',
-    'Teacher Name 17', 'Teacher Name 18', 'Teacher Name 19', 'Teacher Name 20',
-    'Teacher Name 21', 'Teacher Name 22', 'Teacher Name 23', 'Teacher Name 24',
-    'Teacher Name 25', 'Teacher Name 26', 'Teacher Name 27', 'Teacher Name 28',
-    'Teacher Name 29', 'Teacher Name 30', 'Teacher Name 31', 'Teacher Name 32',
+    'Mr. Sanjay Pundhir', 'Mr. Saurav', 'Mrs. Ritu Chahal', 'Mrs. Supriya Sawant',
+    'Mrs. Shefali', 'Mr. Dinesh', 'Mrs. Uravshi Sondhi', 'Mrs. Geetanjali',
+    'Mr. Gaurav Verma', 'Mrs. Poonam Bhatia', 'Mrs. Sumitra Dagar', 'Mr. Dharmendra',
+    'Mr. Ankit', 'Mrs. Neetu Bhatli', 'Mrs. Renu Sharma', 'Mrs. Tannu',
+    'Mrs. Neha Dalal', 'Mr. Yogesh', 'Mrs. Prabhuja Bharti', 'Mrs. Pallavi Pandey',
+    'Mrs. Sneh', 'Mrs. Suman Malik', 'Mr. NJ Jha', 'Mrs. Mitali Roy',
+    'Mrs. Indira', 'Mrs. Bharti', 'Mrs. Debashree Upadhyay', 'Mrs. Deepa Gaur',
+    'Mrs. Neelam', 'Mrs. Rani Sharma', 'Mrs. Sanjeeta', 'Teacher Name 32',
     'Teacher Name 33', 'Teacher Name 34', 'Teacher Name 35', 'Teacher Name 36',
     'Teacher Name 37', 'Teacher Name 38', 'Teacher Name 39', 'Teacher Name 40',
     'Teacher Name 41', 'Teacher Name 42', 'Teacher Name 43', 'Teacher Name 44',
@@ -150,14 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const SUBJECTS = [
     'Mathematics', 'Physics', 'Chemistry', 'Biology', 'English Literature',
-    'History', 'Geography', 'Computer Science', 'Economics', 'Political Science',
-    'Hindi', 'Sanskrit', 'Physical Education', 'Art & Craft', 'Music',
-    'Environmental Science', 'Psychology', 'Accountancy', 'Business Studies', 'French'
+    'History and Geography', 'Informatics Practices', 'Computer applications', 'Economics', 'Political Science',
+    'Hindi', 'Sanskrit', 'Physical Education', 'Sanskrit', 'Art & Craft', 'Music',
+    'Science', 'Accountancy and Business Studies', 'Science', 'Mathematics',
+    'Hindi', 'Home Science', 'Mathematics', 'English', 'Physical Education', 'Hindi', 'Social Studies', 
+    'Science', 'Mathematics', 'English', 'Computer', ''
   ];
   const KNOWN_FOR = [
     'Explaining things twice, just in case', 'Surprise pop quizzes',
     'The most organised handwriting in school', 'Turning boring topics into stories',
-    'Remembering everyone\u2019s birthday', 'Never raising their voice, ever',
+    'Checking the notebooks', 'Never raising their voice, ever',
     'Making Mondays bearable', 'The world\u2019s fastest chalk handwriting',
     'The best pep talks before exams', 'An endless supply of dad jokes',
     'Being scarily good at catching whispers', 'Making the front row sweat',
@@ -167,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const SIGNATURE = [
     'Where is your notebook?', 'This is very easy.', 'I\u2019ve taught this a hundred times!',
     'Silence, please!', 'Let\u2019s revise this one more time.', 'Any questions? No? Good.',
-    'You\u2019ll thank me in the exam.', 'Books out, phones away.', 'One more example, I promise.',
+    'You\u2019ll thank me in the exam.', 'Books out, class.', 'One more example, I promise.',
     'This will be in your exam.', 'Let\u2019s not repeat last time.', 'I\u2019m not angry, just disappointed.',
     'Quick revision before we start.', 'Attention, please!', 'Let\u2019s make this fun.'
   ];
@@ -215,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // block if the JPG hasn't been added yet (or fails to load)
   function photoMarkup(t) {
     return `
-      <img src="${t.photo}" alt="${t.name}" loading="lazy" class="avatar-img"
+      <img src="images/${t.photo}" alt="${t.name}" loading="lazy" class="avatar-img"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <span class="photo-fallback" style="background:${t.color}">${t.initials}</span>
     `;
