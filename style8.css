@@ -581,4 +581,4 @@ body{
   .gift-grid{ grid-template-columns: repeat(2, 1fr); }
   .gift-tile{ padding: 1.3rem .8rem; }
   .gift-modal{ padding: 1.7rem 1.3rem; }
-}
+} 

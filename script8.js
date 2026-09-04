@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.innerHTML = html;
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
-  }
+  } 
   function closeModal() {
     overlay.classList.remove('is-open');
     overlay.setAttribute('aria-hidden', 'true');
@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-btn');
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      window.location.href = 'index9.html';
+      window.location.href = 'index10.html';
     });
   }
 });

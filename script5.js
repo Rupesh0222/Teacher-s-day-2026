@@ -119,23 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
      are saved to this browser's storage and merged in automatically
      on every visit.
      ============================================================ */
-  const SEED_MESSAGES = [
-    { teacher: 'Mrs. Sharma', student: '', message: "You didn't just teach us mathematics. You taught us not to give up when the answer wasn't obvious." },
-    { teacher: 'Mr. Verma', student: 'Aarav, Class 10', message: 'Thank you for believing in us before we knew how to believe in ourselves.' },
-    { teacher: 'Ms. Kapoor', student: '', message: "You made a room full of strangers feel like they belonged to something. I still think about that." },
-    { teacher: 'Mr. Iyer', student: 'Diya', message: "The way you explained things twice, three times, without ever making us feel slow, that stayed with me." },
-    { teacher: 'Mrs. Nair', student: '', message: "You noticed I was quiet in a way that felt like care and not correction. That changed my whole year." },
-    { teacher: 'Mr. Rao', student: 'Kabir, Class 12', message: "I still hear your voice when I'm stuck on something hard: 'read it again, slower.'" },
-    { teacher: 'Ms. Fernandes', student: '', message: "Thank you for staying back on Fridays. None of us ever said it, but we noticed." },
-    { teacher: 'Mrs. Sharma', student: 'Meera', message: "You wrote 'proud of you' on my worst test. I kept that paper for four years." },
-    { teacher: 'Mr. Bose', student: '', message: "You treated our questions like they mattered, even the ones that weren't very good." },
-    { teacher: 'Ms. D\u2019Souza', student: 'Rohan, Class 9', message: "You let me redo the presentation instead of just grading the panic. I never forgot that kindness." },
-    { teacher: 'Mr. Verma', student: '', message: "Every class felt like you actually wanted to be there. That's rarer than you think." },
-    { teacher: 'Mrs. Joshi', student: 'Ananya', message: "You believed my drawings were worth framing before I believed it myself." },
-    { teacher: 'Mr. Iyer', student: '', message: "Thank you for never once making me feel stupid for asking the same question twice." },
-    { teacher: 'Ms. Kapoor', student: 'Yusuf, Class 11', message: "You made history feel like something that happened to real people, not just dates on a board." },
-    { teacher: 'Mrs. Nair', student: '', message: "You saw me on a bad day and just left a note on my desk. It said 'this too will pass.' It did." },
-    { teacher: 'Mr. Rao', student: 'Ishaan', message: "You made the back bench feel like it mattered just as much as the front row." },
+  const SEED_MESSAGES = [ 
+    { teacher: 'Mrs. Sawant', student: '', message: "You didn't just teach us mathematics. You taught us not to give up when the answer wasn't obvious." },
+    { teacher: 'Mr. Pundhir', student: '', message: 'Thank you for believing in us before we knew how to believe in ourselves.' },
+    { teacher: 'Mrs. Pandey', student: '', message: "You made a room full of strangers feel like they belonged to something. I still think about that." },
+    { teacher: 'Mrs. Sondhi', student: '', message: "The way you explained things twice, three times, without ever making us feel slow, that stayed with me." },
+    { teacher: 'Mr. Verma', student: '', message: "You noticed I was quiet in a way that felt like care and not correction. That changed my whole year." },
+    { teacher: 'Mr. Kumar', student: '', message: "I still hear your voice when I'm stuck on something hard: 'read it again, slower.'" },
+    { teacher: 'Mrs. Sharma', student: '', message: "Thank you for staying back on Fridays. None of us ever said it, but we noticed." },
+    { teacher: 'Mrs. Sharma', student: '', message: "You wrote 'proud of you' on my worst test. I kept that paper for four years." },
+    { teacher: 'Mr. Kumar', student: '', message: "You treated our questions like they mattered, even the ones that weren't very good." },
+    { teacher: 'Mrs. Roy', student: '', message: "You let me redo the presentation instead of just grading the panic. I never forgot that kindness." },
+    { teacher: 'Mr. Pundhir', student: '', message: "Every class felt like you actually wanted to be there. That's rarer than you think." },
+    { teacher: 'Mrs. Pandey', student: '', message: "You believed my drawings were worth framing before I believed it myself." },
+    { teacher: 'Mr. Dvivedi', student: '', message: "Thank you for never once making me feel stupid for asking the same question twice." },
+    { teacher: 'Mrs. Sharma', student: '', message: "You made history feel like something that happened to real people, not just dates on a board." },
+    { teacher: 'Mrs. Bhatli', student: '', message: "You saw me on a bad day and just left a note on my desk. It said 'this too will pass.' It did." },
+    { teacher: 'Mrs. Roy', student: '', message: "You made the back bench feel like it mattered just as much as the front row." },
   ];
 
   const TYPES = ['letter', 'sticky', 'slip', 'bubble'];

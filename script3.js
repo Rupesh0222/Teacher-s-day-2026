@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('next-btn');
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      window.location.href = 'index4.html';
+      window.location.href = 'index5.html';
     });
   }
 });

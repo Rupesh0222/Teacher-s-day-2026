@@ -3,49 +3,164 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>One Last Thing&#8230;</title>
+<title>Your Words Matter — Teacher's Day 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style9.css">
 </head>
-<body>
+<body class="td-review-body">
 
-<!-- custom fountain-pen cursor + ink trail -->
-<canvas id="ink-canvas"></canvas>
-<div class="pen-cursor" id="pen-cursor">
-  <svg viewBox="0 0 40 40" width="40" height="40">
-    <g transform="rotate(45 20 20)">
-      <path d="M20 4 L26 16 L20 34 L14 16 Z" fill="#151b23" stroke="#C6A24E" stroke-width="0.6"/>
-      <path d="M20 16 L23 16 L20 30 L17 16 Z" fill="#C6A24E"/>
-      <line x1="20" y1="4" x2="20" y2="16" stroke="#C6A24E" stroke-width="0.8"/>
-    </g>
-  </svg>
-</div>
+<a class="td-review-back" href="index.html">&larr; Back to Celebration</a>
 
-<button class="music-toggle" aria-pressed="false" aria-label="Play background music">
-  <svg class="icon-on" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
-  <svg class="icon-off" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="16" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-</button>
+<main class="td-review-main">
 
-<!-- Background music for this page -->
-<audio id="bg-music" loop preload="none">
-  <source src= audio/bgm.mp3 type="audio/mpeg">
-</audio>
+  <!-- ============ HEADER ============ -->
+  <header class="td-review-header">
+    <p class="td-review-eyebrow">Teacher&#8217;s Day 2026</p>
+    <h1 class="td-review-title">Your Words Matter</h1>
+    <p class="td-review-subtitle">Because the people who taught us deserve to be heard too.</p>
+    <p class="td-review-lede">We&#8217;ve spent years learning from you. Today, we&#8217;d love to know what you thought of our little celebration.</p>
+  </header>
 
-<main class="finale-stage">
-  <div class="ambient-glow"></div>
+  <!-- ============ FORM ============ -->
+  <form class="td-review-form" id="td-review-form" novalidate>
 
-  <div class="reveal-wrap">
-    <p class="reveal-line" id="reveal-line"></p>
+    <!-- ---- Section 1: teacher info ---- -->
+    <section class="td-review-section">
+      <div class="td-review-grid-2">
+        <div class="td-review-field">
+          <input class="td-review-input" type="text" id="td-teacher-name" name="teacherName"
+                 placeholder=" " maxlength="100" required autocomplete="name" />
+          <label class="td-review-label" for="td-teacher-name">Enter your name</label>
+          <p class="td-review-error" id="td-error-name" role="alert"></p>
+        </div>
+        <div class="td-review-field">
+          <input class="td-review-input" type="text" id="td-subject" name="subject"
+                 placeholder=" " maxlength="80" autocomplete="off" />
+          <label class="td-review-label" for="td-subject">e.g. Mathematics</label>
+        </div>
+      </div>
+    </section>
 
-    <div class="finale-block" id="finale-block" aria-hidden="true">
-      <p class="finale-text">Thank You, Teachers. <span class="heart">&#10084;&#65039;</span></p>
-      <button class="replay-btn" id="replay-btn">Replay the Memories</button>
+    <!-- ---- Section 2: star rating ---- -->
+    <section class="td-review-section td-review-section-center">
+      <h2 class="td-review-h2">How did we do?</h2>
+
+      <div class="td-review-stars" id="td-stars">
+        <input type="radio" id="td-star5" name="rating" value="5" />
+        <label for="td-star5" aria-label="5 stars">&#9733;</label>
+        <input type="radio" id="td-star4" name="rating" value="4" />
+        <label for="td-star4" aria-label="4 stars">&#9733;</label>
+        <input type="radio" id="td-star3" name="rating" value="3" />
+        <label for="td-star3" aria-label="3 stars">&#9733;</label>
+        <input type="radio" id="td-star2" name="rating" value="2" />
+        <label for="td-star2" aria-label="2 stars">&#9733;</label>
+        <input type="radio" id="td-star1" name="rating" value="1" />
+        <label for="td-star1" aria-label="1 star">&#9733;</label>
+      </div>
+ 
+      <p class="td-review-star-message" id="td-star-message">&nbsp;</p>
+      <p class="td-review-error" id="td-error-rating" role="alert"></p>
+    </section>
+
+    <!-- ---- Section 3: feedback letter ---- -->
+    <section class="td-review-section">
+      <h2 class="td-review-h2">Tell Us What You Felt</h2>
+      <div class="td-review-paper">
+        <textarea class="td-review-textarea" id="td-feedback" name="feedback"
+                  maxlength="500" rows="6"
+                  placeholder="Tell us what you loved, what made you smile, or what we could make even better..."></textarea>
+        <div class="td-review-paper-foot">
+          <span class="td-review-counter"><span id="td-feedback-count">0</span>/500</span>
+        </div>
+      </div>
+      <p class="td-review-error" id="td-error-feedback" role="alert"></p>
+    </section>
+
+    <!-- ---- Section 4: one word ---- -->
+    <section class="td-review-section td-review-section-center">
+      <h2 class="td-review-h2">Describe Our Effort in One Word</h2>
+      <div class="td-review-pills" id="td-pills" role="group" aria-label="Choose one word">
+        <button type="button" class="td-review-pill" data-word="Proud">Proud</button>
+        <button type="button" class="td-review-pill" data-word="Heartwarming">Heartwarming</button>
+        <button type="button" class="td-review-pill" data-word="Creative">Creative</button>
+        <button type="button" class="td-review-pill" data-word="Memorable">Memorable</button>
+        <button type="button" class="td-review-pill" data-word="Fun">Fun</button>
+        <button type="button" class="td-review-pill" data-word="Beautiful">Beautiful</button>
+        <button type="button" class="td-review-pill" data-word="Impressive">Impressive</button>
+        <button type="button" class="td-review-pill" data-word="Wonderful">Wonderful</button>
+        <button type="button" class="td-review-pill" data-word="Thoughtful">Thoughtful</button>
+        <button type="button" class="td-review-pill" data-word="Inspiring">Inspiring</button>
+      </div>
+      <div class="td-review-own-word">
+        <input class="td-review-own-input" type="text" id="td-own-word" maxlength="24"
+               placeholder="Write your own" autocomplete="off" />
+      </div>
+    </section>
+
+    <!-- ---- Section 5: personal message ---- -->
+    <section class="td-review-section">
+      <h2 class="td-review-h2">If you could leave one message for the students who created this celebration, what would you say?</h2>
+      <div class="td-review-paper">
+        <textarea class="td-review-textarea" id="td-personal-message" name="personalMessage"
+                  maxlength="500" rows="4"
+                  placeholder="Leave a message we'd love to remember..."></textarea>
+        <div class="td-review-paper-foot">
+          <span class="td-review-counter"><span id="td-personal-count">0</span>/500</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- submission error banner ---- -->
+    <div class="td-review-submit-error" id="td-submit-error" role="alert" aria-hidden="true">
+      <p id="td-submit-error-text">We couldn&#8217;t save your message right now. Please try again.</p>
+      <button type="button" class="td-review-retry-btn" id="td-retry-btn">Try Again</button>
     </div>
-  </div>
+
+    <!-- ---- submit ---- -->
+    <div class="td-review-submit-wrap">
+      <button class="td-review-submit-btn" id="td-submit-btn" type="submit">
+        <span class="td-review-submit-label">Leave Your Mark <span class="td-review-sparkle">&#10024;</span></span>
+        <span class="td-review-submit-spinner" aria-hidden="true"></span>
+      </button>
+    </div>
+
+  </form>
+
+  <!-- ============ WALL OF APPRECIATION ============ -->
+  <section class="td-review-wall" id="td-wall">
+    <div class="td-review-wall-header">
+      <h2 class="td-review-wall-title">Wall of Appreciation</h2>
+      <p class="td-review-wall-subtitle">Some words are worth keeping forever.</p>
+
+      <div class="td-review-average" id="td-average" hidden>
+        <p class="td-review-average-caption">Teachers rated our celebration</p>
+        <div class="td-review-average-stars" id="td-average-stars" aria-hidden="true"></div>
+        <p class="td-review-average-score"><span id="td-average-number">0.0</span> / 5</p>
+        <p class="td-review-average-basis" id="td-average-basis"></p>
+      </div>
+    </div>
+
+    <div class="td-review-wall-grid" id="td-wall-grid">
+      <!-- skeleton / cards / empty state injected here by review.js -->
+    </div>
+  </section>
+
 </main>
 
-<script src="script9.js"></script>
+<!-- ============ SUCCESS MODAL ============ -->
+<div class="td-review-success-overlay" id="td-success-overlay" aria-hidden="true">
+  <canvas class="td-review-particle-canvas" id="td-particle-canvas"></canvas>
+  <div class="td-review-success-card">
+    <p class="td-review-success-eyebrow">&#10084;&#65039;</p>
+    <h2 class="td-review-success-title">Thank You, Teacher <span class="td-review-heart">&#10084;&#65039;</span></h2>
+    <p class="td-review-success-line">Your words mean more to us than you know.</p>
+    <p class="td-review-success-line">Your message has been safely added to our Teacher&#8217;s Day memories.</p>
+    <button class="td-review-wall-btn" id="td-view-wall-btn">View the Wall of Appreciation</button>
+  </div>
+</div>
+
+<script type="module" src="script9.js"></script>
 </body>
 </html>

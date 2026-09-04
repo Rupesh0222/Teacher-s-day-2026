@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Review Dashboard — Teacher's Day 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="td-admin-body">
+
+<!-- ============ LOGIN GATE ============ -->
+<div class="td-admin-login-wrap" id="td-admin-login-wrap">
+  <form class="td-admin-login-card" id="td-admin-login-form" novalidate>
+    <p class="td-admin-login-eyebrow">Teacher&#8217;s Day 2026</p>
+    <h1 class="td-admin-login-title">Review Dashboard</h1>
+    <p class="td-admin-login-sub">Sign in with your admin account to continue.</p>
+
+    <div class="td-admin-field">
+      <label class="td-admin-field-label" for="td-admin-email">Email</label>
+      <input class="td-admin-input" type="email" id="td-admin-email" autocomplete="username" required />
+    </div>
+    <div class="td-admin-field">
+      <label class="td-admin-field-label" for="td-admin-password">Password</label>
+      <input class="td-admin-input" type="password" id="td-admin-password" autocomplete="current-password" required />
+    </div>
+
+    <p class="td-admin-login-error" id="td-admin-login-error" role="alert"></p>
+
+    <button class="td-admin-login-btn" id="td-admin-login-btn" type="submit">
+      <span class="td-admin-login-btn-label">Sign In</span>
+      <span class="td-admin-login-spinner" aria-hidden="true"></span>
+    </button>
+  </form>
+</div>
+
+<!-- ============ DASHBOARD (hidden until authenticated) ============ -->
+<div class="td-admin-dashboard" id="td-admin-dashboard" hidden>
+
+  <header class="td-admin-header">
+    <div>
+      <p class="td-admin-eyebrow">Teacher&#8217;s Day 2026</p>
+      <h1 class="td-admin-title">Review Dashboard</h1>
+    </div>
+    <div class="td-admin-header-actions">
+      <span class="td-admin-user-email" id="td-admin-user-email"></span>
+      <button class="td-admin-signout-btn" id="td-admin-signout-btn" type="button">Sign Out</button>
+    </div>
+  </header>
+
+  <!-- ---- stats ---- -->
+  <section class="td-admin-stats" id="td-admin-stats">
+    <div class="td-admin-stat-card">
+      <p class="td-admin-stat-value" id="td-stat-total">&mdash;</p>
+      <p class="td-admin-stat-label">Total Reviews</p>
+    </div>
+    <div class="td-admin-stat-card">
+      <p class="td-admin-stat-value" id="td-stat-average">&mdash;</p>
+      <p class="td-admin-stat-label">Average Rating</p>
+    </div>
+    <div class="td-admin-stat-card">
+      <p class="td-admin-stat-value" id="td-stat-fivestar">&mdash;</p>
+      <p class="td-admin-stat-label">5-Star Reviews</p>
+    </div>
+    <div class="td-admin-stat-card">
+      <p class="td-admin-stat-value" id="td-stat-pending">&mdash;</p>
+      <p class="td-admin-stat-label">Pending Reviews</p>
+    </div>
+    <div class="td-admin-stat-card">
+      <p class="td-admin-stat-value" id="td-stat-approved">&mdash;</p>
+      <p class="td-admin-stat-label">Approved Reviews</p>
+    </div>
+  </section>
+
+  <!-- ---- filter tabs ---- -->
+  <div class="td-admin-tabs" role="tablist">
+    <button class="td-admin-tab is-active" data-filter="all" type="button" role="tab" aria-selected="true">All</button>
+    <button class="td-admin-tab" data-filter="pending" type="button" role="tab" aria-selected="false">Pending</button>
+    <button class="td-admin-tab" data-filter="approved" type="button" role="tab" aria-selected="false">Approved</button>
+  </div>
+
+  <!-- ---- reviews list ---- -->
+  <section class="td-admin-list" id="td-admin-list">
+    <p class="td-admin-loading" id="td-admin-loading">Loading reviews&#8230;</p>
+  </section>
+
+</div>
+
+<!-- ============ TOAST (action feedback) ============ -->
+<div class="td-admin-toast" id="td-admin-toast" role="status" aria-live="polite"></div>
+
+<!-- ============ CONFIRM DELETE DIALOG ============ -->
+<div class="td-admin-confirm-overlay" id="td-admin-confirm-overlay" aria-hidden="true">
+  <div class="td-admin-confirm-card">
+    <p class="td-admin-confirm-title">Delete this review?</p>
+    <p class="td-admin-confirm-sub">This can&#8217;t be undone.</p>
+    <div class="td-admin-confirm-actions">
+      <button class="td-admin-confirm-cancel" id="td-admin-confirm-cancel" type="button">Cancel</button>
+      <button class="td-admin-confirm-delete" id="td-admin-confirm-delete" type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
